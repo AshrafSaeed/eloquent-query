@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::get('/simple', function(){
+
+	$users = User::all();
+
+	//return view('pages.simple', ['users' => $users]);
+	//return view('pages.simple', compact('users'));
+	//return view('pages.simple')->with(['users' => $users]);
+	return view('pages.simple')->withUsers($users);
+
 });
